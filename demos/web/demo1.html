@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo 1 | Landing Page Profesional</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#1E2328', 
+                        'accent-gold': '#C8A35E', 
+                        'background-light': '#F8F8F8', 
+                    },
+                    fontFamily: {
+                        'heading': ['Playfair Display', 'serif'],
+                        'body': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="font-body text-primary-dark bg-white">
+
+    <header class="bg-primary-dark text-white p-4 shadow-lg">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="font-heading text-2xl font-bold">Consultora [Tu Nombre]</div>
+            <a href="#" class="bg-accent-gold text-primary-dark px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition">Contáctanos</a>
+        </div>
+    </header>
+
+    <section class="bg-gray-50 py-20 md:py-32 px-5 text-center">
+        <div class="max-w-4xl mx-auto">
+            <p class="text-accent-gold font-semibold uppercase tracking-widest mb-3">Servicios de Marketing Digital</p>
+            <h1 class="font-heading text-4xl md:text-5xl font-bold text-primary-dark mb-6">
+                Lleva tu negocio al siguiente nivel con estrategias comprobadas.
+            </h1>
+            <p class="text-xl text-gray-700 mb-10">
+                Diseñamos tu presencia online desde cero. Atrae clientes reales y aumenta tus ventas en 30 días.
+            </p>
+            <a href="#contacto" class="inline-block bg-accent-gold text-primary-dark px-10 py-4 rounded-full font-bold text-lg shadow-md hover:shadow-xl transition duration-300">
+                ¡Quiero mi Web!
+            </a>
+        </div>
+    </section>
+
+    <section class="py-16 px-5 max-w-6xl mx-auto text-center">
+        <h2 class="font-heading text-3xl font-bold mb-12">Por qué elegir nuestra solución web.</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition">
+                <i class="fas fa-palette text-4xl text-accent-gold mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Diseño Premium</h3>
+                <p class="text-gray-600">Interfaz elegante, limpia y profesional que genera confianza en tus visitantes.</p>
+            </div>
+            
+            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition">
+                <i class="fas fa-tachometer-alt text-4xl text-accent-gold mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Carga Ultrarrápida</h3>
+                <p class="text-gray-600">Optimización completa para que tu web cargue en menos de 3 segundos, ¡adiós rebote!</p>
+            </div>
+            
+            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition">
+                <i class="fas fa-mobile-alt text-4xl text-accent-gold mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">100% Responsive</h3>
+                <p class="text-gray-600">Se ve perfecto en cualquier dispositivo: móvil, tableta o escritorio.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto" class="bg-primary-dark text-white py-16 px-5 mt-10">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="font-heading text-3xl font-bold mb-4">¿Hablamos de tu proyecto?</h2>
+            <p class="text-lg text-gray-300 mb-8">
+                Completa el formulario y te contactaremos en menos de 24 horas para comenzar.
+            </p>
+            
+            <form class="space-y-4 max-w-md mx-auto">
+                <input 
+                    type="text" 
+                    placeholder="Tu Nombre y Apellido" 
+                    class="w-full p-3 rounded-lg border-2 border-gray-600 focus:border-accent-gold focus:outline-none text-primary-dark"
+                />
+                <input 
+                    type="email" 
+                    placeholder="Tu Correo Electrónico" 
+                    class="w-full p-3 rounded-lg border-2 border-gray-600 focus:border-accent-gold focus:outline-none text-primary-dark"
+                />
+                <textarea 
+                    placeholder="Cuéntanos brevemente sobre tu negocio" 
+                    rows="4"
+                    class="w-full p-3 rounded-lg border-2 border-gray-600 focus:border-accent-gold focus:outline-none text-primary-dark"
+                ></textarea>
+                <button 
+                    type="submit" 
+                    class="w-full bg-accent-gold text-primary-dark px-6 py-3 rounded-lg font-bold text-lg hover:bg-opacity-90 transition duration-300"
+                >
+                    Enviar Solicitud
+                </button>
+            </form>
+            
+            <p class="mt-8 text-sm text-gray-500">
+                Nota: Este es un diseño demo creado por [Tu Nombre Dev.]. Los formularios no están conectados a una base de datos.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
