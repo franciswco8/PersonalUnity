@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo 6 | Juego Clásico Snake (Retro)</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-retro-dark': '#1F2937', // Fondo exterior de la ventana
+                        'border-retro': '#374151',  // Borde oscuro de la ventana
+                        'header-retro': '#4B5563',  // Barra de título de la ventana
+                        'text-retro': '#E5E7EB',    // Texto de la UI retro
+                        'bg-game-board': '#3B4A6A', // Fondo del tablero de juego
+                        'snake-body': '#6EE7B7',    // Verde claro de la serpiente
+                        'snake-head': '#22C55E',    // Verde más oscuro para la cabeza
+                        'food-color': '#FACC15',    // Amarillo de la comida
+                        'heart-fill': '#EF4444',    // Rojo de los corazones
+                        'heart-empty': '#9CA3AF',   // Gris de los corazones vacíos
+                    },
+                    fontFamily: {
+                        // Usamos Press Start 2P para todo el texto de la UI del juego
+                        'game-pixel': ['"Press Start 2P"', 'monospace'], 
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Estilos generales para el cuerpo y el contenedor principal */
+        body {
+            font-family: 'Press Start 2P', monospace; /* Asegura la fuente pixel para todo el body */
+            -webkit-font-smoothing: none; /* Deshabilita el suavizado de fuentes en WebKit */
+            image-rendering: pixelated; /* Asegura que los gráficos de baja resolución se vean pixelados */
+            image-rendering: crisp-edges; /* Alternativa para mejor compatibilidad */
+        }
+
+        /* Contenedor del juego que simula la ventana */
+        .game-window {
+            background-color: #374151; /* Color de borde de la ventana */
+            border-radius: 8px; /* Bordes redondeados */
+            overflow: hidden; /* Asegura que el contenido interno no se desborde */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4); /* Sombra más pronunciada */
+            border: 2px solid #555; /* Borde de la ventana */
+        }
+        
+        /* Barra de título de la ventana */
+        .window-header {
+            background-color: #4B5563; /* Color de barra de título */
+            border-bottom: 2px solid #555;
+        }
+
+        /* Canvas de juego con su propio fondo oscuro */
+        #snakeCanvas {
+            background-color: #3B4A6A; /* Fondo del tablero de juego */
+            display: block; /* Elimina espacio extra debajo del canvas */
+            margin: 0 auto; /* Centra el canvas */
+        }
+        
+        /* Estilos específicos para la UI retro */
+        .pixel-text {
+            font-family: 'Press Start 2P', monospace;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.2); /* Sombra sutil para "pixelar" más el texto */
+        }
+        
+        /* Clases para los corazones */
+        .heart {
+            display: inline-block;
+            width: 16px; /* Ajusta el tamaño del corazón */
+            height: 16px;
+            background-color: currentColor; /* Usa el color del texto */
+            position: relative;
+            transform: rotate(-45deg); /* Gira para formar el corazón */
+            margin: 0 2px;
+        }
+        .heart::before, .heart::after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            background-color: currentColor;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart::before {
+            top: -50%;
+            left: 0;
+        }
+        .heart::after {
+            top: 0;
+            left: 50%;
+        }
+    </style>
+</head>
+<body class="bg-bg-retro-dark min-h-screen flex flex-col items-center justify-center p-4 text-text-retro pixel-text">
+
+    <div class="game-window w-full max-w-xl">
+        <div class="window-header flex justify-between items-center p-2">
+            <span class="text-sm">S N A K E (Demo)</span>
+            <div class="flex space-x-1">
+                <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
+                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+            </div>
+        </div>
+
+        <div class="p-4 bg-bg-retro-dark">
+            <div class="flex justify-between items-center p-2 mb-4 bg-bg-retro-dark">
+                <span class="text-sm">SCORE:<span id="score" class="ml-2 text-food-color">0000</span></span>
+                <span class="text-sm">LEVEL:<span id="level" class="ml-2 text-food-color">01</span></span>
+                <div class="flex items-center">
+                    <div class="heart text-heart-fill"></div>
+                    <div class="heart text-heart-fill"></div>
+                    <div class="heart text-heart-empty"></div> </div>
+            </div>
+
+            <canvas id="snakeCanvas" width="400" height="400" class="mx-auto block"></canvas>
+
+            <div class="text-center mt-6">
+                <p class="text-xs text-text-retro mb-4">Usa las teclas de flecha para moverte.</p>
+                
+                <button onclick="startGame()" class="bg-primary-snake text-text-retro px-8 py-3 rounded-md font-bold text-lg shadow-lg hover:bg-green-600 transition transform hover:scale-105 active:scale-95 text-sm">
+                    Iniciar Juego
+                </button>
+                
+                <p id="gameOverMessage" class="mt-4 text-xl font-bold text-red-500 hidden">¡GAME OVER!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- CONFIGURACIÓN DEL JUEGO ---
+        const canvas = document.getElementById('snakeCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreElement = document.getElementById('score');
+        const levelElement = document.getElementById('level'); // Nuevo elemento para nivel
+        const gameOverMessage = document.getElementById('gameOverMessage');
+        
+        const TILE_SIZE = 20;
+        const TILE_COUNT = canvas.width / TILE_SIZE;
+        let snake = [];
+        let food = {};
+        let velocityX = 0;
+        let velocityY = 0;
+        let score = 0;
+        let level = 1; // Nivel inicial
+        let gameLoop;
+        let speed = 150; // Velocidad inicial (más lento para empezar)
+
+        // --- FUNCIÓN PRINCIPAL DE INICIO ---
+        function startGame() {
+            clearInterval(gameLoop);
+            gameOverMessage.classList.add('hidden');
+            score = 0;
+            level = 1;
+            speed = 150; // Resetear velocidad
+            scoreElement.textContent = '0000'; // Formato de puntuación
+            levelElement.textContent = '01'; // Formato de nivel
+            
+            velocityX = 1; 
+            velocityY = 0;
+            
+            snake = [{ x: 10, y: 10 }]; 
+            
+            placeFood();
+            
+            gameLoop = setInterval(update, speed);
+        }
+
+        // --- FUNCIÓN PARA COLOCAR LA COMIDA ---
+        function placeFood() {
+            food.x = Math.floor(Math.random() * TILE_COUNT);
+            food.y = Math.floor(Math.random() * TILE_COUNT);
+            
+            for (let i = 0; i < snake.length; i++) {
+                if (snake[i].x === food.x && snake[i].y === food.y) {
+                    placeFood();
+                    return;
+                }
+            }
+        }
+
+        // --- BUCLE PRINCIPAL DEL JUEGO ---
+        function update() {
+            const headX = snake[0].x + velocityX;
+            const headY = snake[0].y + velocityY;
+            
+            // Comprobar Colisión
+            if (
+                headX < 0 || headX >= TILE_COUNT ||
+                headY < 0 || headY >= TILE_COUNT ||
+                isCollidingWithSelf(headX, headY)
+            ) {
+                gameOver();
+                return;
+            }
+
+            snake.unshift({ x: headX, y: headY });
+
+            // Comprobar Comida
+            if (headX === food.x && headY === food.y) {
+                score++;
+                scoreElement.textContent = String(score).padStart(4, '0'); // Formato de 4 dígitos
+                
+                // Subir de nivel cada 5 puntos (ejemplo)
+                if (score % 5 === 0) {
+                    level++;
+                    levelElement.textContent = String(level).padStart(2, '0');
+                    // Aumentar la velocidad
+                    speed = Math.max(50, speed - 10); // Velocidad mínima de 50ms
+                    clearInterval(gameLoop);
+                    gameLoop = setInterval(update, speed);
+                }
+                placeFood();
+            } else {
+                snake.pop();
+            }
+
+            drawGame();
+        }
+
+        // --- FUNCIÓN DE DIBUJO ---
+        function drawGame() {
+            // Limpiar Canvas (fondo del juego)
+            ctx.fillStyle = '#3B4A6A'; // bg-game-board
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Dibujar cuadrícula (simulando los bloques oscuros)
+            ctx.fillStyle = 'rgba(0,0,0,0.1)'; // Líneas de la cuadrícula
+            for (let i = 0; i < TILE_COUNT; i++) {
+                for (let j = 0; j < TILE_COUNT; j++) {
+                    // Dibujar un pequeño cuadrado más oscuro para la rejilla de fondo
+                    ctx.fillRect(i * TILE_SIZE, j * TILE_SIZE, TILE_SIZE -1 , TILE_SIZE -1 ); 
+                }
+            }
+
+
+            // Dibujar Comida (food-color)
+            ctx.fillStyle = '#FACC15'; 
+            ctx.fillRect(food.x * TILE_SIZE, food.y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+
+            // Dibujar Serpiente
+            for (let i = 0; i < snake.length; i++) {
+                if (i === 0) {
+                    ctx.fillStyle = '#22C55E'; // snake-head
+                } else {
+                    ctx.fillStyle = '#6EE7B7'; // snake-body
+                }
+                
+                // Dibujar el segmento (sin margen para que se vea más sólido y pixelado)
+                ctx.fillRect(snake[i].x * TILE_SIZE, snake[i].y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+            }
+        }
+
+        // --- FUNCIÓN DE COLISIÓN CON EL CUERPO ---
+        function isCollidingWithSelf(headX, headY) {
+            for (let i = 1; i < snake.length; i++) {
+                if (headX === snake[i].x && headY === snake[i].y) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // --- FUNCIÓN DE FIN DEL JUEGO ---
+        function gameOver() {
+            clearInterval(gameLoop);
+            gameOverMessage.classList.remove('hidden');
+        }
+
+        // --- CONTROL DE TECLADO ---
+        document.addEventListener('keydown', changeDirection);
+
+        function changeDirection(e) {
+            if (e.key === 'ArrowUp' && velocityY !== 1) {
+                velocityX = 0;
+                velocityY = -1;
+            } else if (e.key === 'ArrowDown' && velocityY !== -1) {
+                velocityX = 0;
+                velocityY = 1;
+            } else if (e.key === 'ArrowLeft' && velocityX !== 1) {
+                velocityX = -1;
+                velocityY = 0;
+            } else if (e.key === 'ArrowRight' && velocityX !== -1) {
+                velocityX = 1;
+                velocityY = 0;
+            }
+        }
+        
+        window.onload = startGame;
+    </script>
+</body>
+</html>
