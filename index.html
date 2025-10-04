@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PersonalUnity | Desarrollo Web & Software a la medida</title>
+    <title>PersonalUnity | Desarrollo Web & Software Carmesí</title>
     
     <!-- CDN de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,11 +19,12 @@
             theme: {
                 extend: {
                     colors: {
-                        // Nueva Paleta de Colores 'Modern Tech Blue'
-                        'primary-dark': '#0F172A', // Navy/Dark Blue (Fondo Principal)
-                        'accent-blue': '#06B6D4', // Electric Cyan/Blue (Acento principal)
-                        'accent-orange': '#FF7A00', // Nuevo color para el logo y acento de Sobre Mí
-                        'text-light': '#F1F5F9', // Off-White (Texto y fondo secundario)
+                        // Paleta de Colores: Carmesí y Oscuro
+                        'primary-dark': '#000000', // Negro Profundo (Fondo Principal)
+                        'secondary-dark': '#0F0F0F', // Gris muy oscuro para alternancia
+                        'accent-carmesi': '#A41A1A', // Carmesí Oscuro (Acento principal)
+                        'accent-light': '#FF4444',   // Rojo Brillante/Iluminación
+                        'text-light': '#F8F8F8',    // Blanco Brillante (Texto)
                     },
                     fontFamily: {
                         'heading': ['Poppins', 'sans-serif'],
@@ -34,29 +35,29 @@
         }
     </script>
 </head>
-<!-- Aplicamos el fondo oscuro principal y el color de texto claro -->
+<!-- Aplicamos el fondo negro principal y el color de texto blanco -->
 <body class="font-body bg-primary-dark text-text-light pt-16">
 
-    <!-- CABECERA: Fondo blanco para contraste -->
-    <header class="fixed top-0 left-0 w-full bg-white shadow-lg z-50 px-5 py-4">
+    <!-- CABECERA: Mantenemos el fondo blanco para un fuerte contraste y lectura clara de la navegación -->
+    <header class="fixed top-0 left-0 w-full bg-white shadow-lg z-50 px-5 py-4 border-b-4 border-accent-carmesi">
         <div class="flex justify-between items-center max-w-7xl mx-auto">
-            <!-- Logo - Ahora en color naranja -->
-            <div class="font-heading text-xl font-bold text-accent-orange">PersonalUnity.</div>
+            <!-- Logo - Ahora en color Carmesí Oscuro -->
+            <div class="font-heading text-xl font-bold text-accent-carmesi">PersonalUnity.</div>
             
             <!-- Contenedor del menú principal (Desktop) y botón de contacto (siempre visible) -->
             <nav class="flex items-center space-x-4 sm:space-x-6">
                 <!-- Enlaces de navegación (Ocultos en móvil) -->
                 <div class="hidden sm:flex items-center space-x-6">
                     <!-- ENLACE PARA ABRIR MODAL SOBRE MÍ (Desktop) -->
-                    <a href="#" id="openAboutModalBtnDesktop" class="text-primary-dark hover:text-accent-blue font-semibold transition">Sobre Mí</a>
-                    <a href="#servicios" class="text-primary-dark hover:text-accent-blue font-semibold transition">Servicios</a>
-                    <!-- NUEVO ENLACE: Precios -->
-                    <a href="#precios" class="text-primary-dark hover:text-accent-blue font-semibold transition">Precios</a>
-                    <a href="#portafolio" class="text-primary-dark hover:text-accent-blue font-semibold transition">Portafolio</a>
+                    <a href="#" id="openAboutModalBtnDesktop" class="text-primary-dark hover:text-accent-carmesi font-semibold transition">Sobre Mí</a>
+                    <a href="#servicios" class="text-primary-dark hover:text-accent-carmesi font-semibold transition">Servicios</a>
+                    <!-- ENLACE: Precios -->
+                    <a href="#precios" class="text-primary-dark hover:text-accent-carmesi font-semibold transition">Precios</a>
+                    <a href="#portafolio" class="text-primary-dark hover:text-accent-carmesi font-semibold transition">Portafolio</a>
                 </div>
                 
                 <!-- Botón de Contacto (Siempre visible) -->
-                <a href="#" id="openModalBtn" class="border-2 border-accent-blue text-accent-blue hover:bg-accent-blue hover:text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-semibold transition shadow-md text-sm sm:text-base">Contacto</a>
+                <a href="#" id="openModalBtn" class="border-2 border-accent-carmesi text-accent-carmesi hover:bg-accent-carmesi hover:text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-semibold transition shadow-md text-sm sm:text-base">Contacto</a>
                 
                 <!-- Botón del Menú Hamburguesa (Visible solo en móvil) -->
                 <button id="menuToggle" class="sm:hidden text-primary-dark text-2xl p-1 focus:outline-none">
@@ -70,95 +71,97 @@
             <!-- ENLACE PARA ABRIR MODAL SOBRE MÍ (Móvil) -->
             <a href="#" id="openAboutModalBtnMobile" class="block py-2 px-4 text-primary-dark hover:bg-gray-100 transition" onclick="document.getElementById('mobileMenu').classList.add('hidden');">Sobre Mí</a>
             <a href="#servicios" class="block py-2 px-4 text-primary-dark hover:bg-gray-100 transition" onclick="document.getElementById('mobileMenu').classList.add('hidden');">Servicios</a>
-            <!-- NUEVO ENLACE: Precios (Móvil) -->
+            <!-- ENLACE: Precios (Móvil) -->
             <a href="#precios" class="block py-2 px-4 text-primary-dark hover:bg-gray-100 transition" onclick="document.getElementById('mobileMenu').classList.add('hidden');">Precios</a>
             <a href="#portafolio" class="block py-2 px-4 text-primary-dark hover:bg-gray-100 transition" onclick="document.getElementById('mobileMenu').classList.add('hidden');">Portafolio</a>
         </div>
     </header>
 
-    <!-- SECCIÓN HERO: Fondo Azul Marino (bg-primary-dark) -->
-    <section id="hero" class="bg-primary-dark text-white text-center py-32 px-5 border-b border-gray-800">
+    <!-- SECCIÓN HERO: Fondo Negro Profundo (bg-primary-dark) -->
+    <section id="hero" class="bg-primary-dark text-white text-center py-32 px-5 border-b border-gray-900">
         <div class="max-w-4xl mx-auto">
             <h1 class="font-heading text-5xl md:text-6xl font-normal mb-5">
-                Desarrollo <span class="font-bold text-accent-blue">Web & Software</span>
-                <br class="hidden sm:inline"> de Alto Rendimiento.
+                Desarrollo <span class="font-bold text-accent-light">Web & Software</span>
+                <br class="hidden sm:inline"> de Alto Impacto.
             </h1>
-            <p class="text-xl opacity-80 mb-10 text-text-light">
-                Creando soluciones digitales con enfoque minimalista, tecnología de punta y diseño funcional.
+            <p class="text-xl opacity-90 mb-10 text-text-light">
+                Creando soluciones digitales con enfoque audaz, tecnología de punta y diseño funcional.
             </p>
             <!-- Botón CTA principal -->
-            <a href="#servicios" class="inline-block bg-accent-blue text-primary-dark px-8 py-4 rounded-full font-bold text-lg hover:bg-cyan-400 transition transform hover:scale-105 shadow-xl">
+            <a href="#servicios" class="inline-block bg-accent-carmesi text-text-light px-8 py-4 rounded-full font-bold text-lg hover:bg-accent-light transition transform hover:scale-105 shadow-2xl shadow-accent-light/40">
                 Ver Opciones de Desarrollo
             </a>
         </div>
     </section>
 
-    <!-- SECCIÓN SERVICIOS: Fondo Gris Oscuro (bg-gray-900) -->
-    <section id="servicios" class="py-20 px-5 max-w-7xl mx-auto bg-gray-900 text-text-light border-b border-gray-800">
-        <h2 class="font-heading text-4xl font-bold text-center mb-10 relative after:content-[''] after:block after:w-16 after:h-0.5 after:bg-accent-blue after:mx-auto after:mt-3">Servicios.</h2>
+    <!-- SECCIÓN SERVICIOS: Fondo Gris Oscuro (bg-secondary-dark) -->
+    <section id="servicios" class="py-20 px-5 max-w-7xl mx-auto bg-secondary-dark text-text-light border-b border-gray-900">
+        <h2 class="font-heading text-4xl font-bold text-center mb-10 relative after:content-[''] after:block after:w-16 after:h-0.5 after:bg-accent-light after:mx-auto after:mt-3">Servicios.</h2>
         
         <div class="flex flex-wrap justify-center gap-8">
-            <!-- Tarjeta 1: Páginas Web Profesionales (Fondo gris ligeramente más claro) -->
-            <div class="bg-gray-800 p-8 rounded-xl shadow-2xl w-full md:w-80 border-t-4 border-accent-blue transform hover:-translate-y-2 transition duration-500">
-                <i class="fas fa-laptop-code text-3xl text-accent-blue mb-4"></i>
+            <!-- Tarjeta 1: Páginas Web Profesionales -->
+            <!-- Tarjeta con borde carmesí y sombreado de iluminación -->
+            <div class="bg-gray-900 p-8 rounded-xl shadow-2xl w-full md:w-80 border-t-4 border-accent-carmesi transform hover:-translate-y-2 transition duration-500 hover:shadow-accent-light/30">
+                <i class="fas fa-laptop-code text-3xl text-accent-light mb-4"></i>
                 <h3 class="font-heading text-2xl font-semibold mb-3 text-text-light">Páginas Web Profesionales</h3>
                 <p class="text-gray-400 mb-5">Sitios elegantes, escalables y 100% responsive (adaptables a móviles) para emprendedores y PyMES.</p>
-                <a href="demos/landing-pages/lp1.html" class="text-accent-blue font-semibold hover:text-cyan-400 transition">Ver Demo &rarr;</a>
+                <a href="demos/landing-pages/lp1.html" class="text-accent-light font-semibold hover:text-accent-carmesi transition">Ver Demo &rarr;</a>
             </div>
 
-            <!-- Tarjeta 2: Aplicaciones Web Personalizadas (Fondo gris ligeramente más claro) -->
-            <div class="bg-gray-800 p-8 rounded-xl shadow-2xl w-full md:w-80 border-t-4 border-accent-blue transform hover:-translate-y-2 transition duration-500">
-                <i class="fas fa-cogs text-3xl text-accent-blue mb-4"></i>
+            <!-- Tarjeta 2: Aplicaciones Web Personalizadas -->
+            <div class="bg-gray-900 p-8 rounded-xl shadow-2xl w-full md:w-80 border-t-4 border-accent-carmesi transform hover:-translate-y-2 transition duration-500 hover:shadow-accent-light/30">
+                <i class="fas fa-cogs text-3xl text-accent-light mb-4"></i>
                 <h3 class="font-heading text-2xl font-semibold mb-3 text-text-light">Aplicaciones Web Personalizadas</h3>
                 <p class="text-gray-400 mb-5">Herramientas y plataformas sencillas para automatizar tareas, gestionar datos e incrementar tu productividad.</p>
-                <a href="demos/utilidades/conversor-divisas.html" class="text-accent-blue font-semibold hover:text-cyan-400 transition">Ver Ejemplo &rarr;</a>
+                <a href="demos/utilidades/conversor-divisas.html" class="text-accent-light font-semibold hover:text-accent-carmesi transition">Ver Ejemplo &rarr;</a>
             </div>
         </div>
     </section>
     
-    <!-- NUEVA SECCIÓN: PRECIOS - Fondo Azul Marino (bg-primary-dark) para contraste -->
-    <section id="precios" class="py-20 px-5 max-w-7xl mx-auto bg-primary-dark text-text-light border-b border-gray-800">
-        <h2 class="font-heading text-4xl font-bold text-center mb-10 relative after:content-[''] after:block after:w-16 after:h-0.5 after:bg-accent-orange after:mx-auto after:mt-3">Precios.</h2>
+    <!-- SECCIÓN: PRECIOS - Fondo Negro Profundo (bg-primary-dark) -->
+    <section id="precios" class="py-20 px-5 max-w-7xl mx-auto bg-primary-dark text-text-light border-b border-gray-900">
+        <h2 class="font-heading text-4xl font-bold text-center mb-10 relative after:content-[''] after:block after:w-16 after:h-0.5 after:bg-accent-carmesi after:mx-auto after:mt-3">Precios.</h2>
         <p class="text-lg text-center mb-12 text-gray-400 max-w-2xl mx-auto">Ofrecemos dos rutas principales para tu proyecto, diseñadas para adaptarse a diferentes necesidades de presupuesto y complejidad.</p>
 
         <div class="flex flex-wrap justify-center gap-10">
             
             <!-- Plan 1: Landing Page (Ruta Rápida) -->
-            <div class="bg-gray-800 p-8 rounded-xl shadow-2xl w-full md:w-96 border-t-4 border-accent-blue flex flex-col transform hover:scale-[1.02] transition duration-500">
+            <div class="bg-secondary-dark p-8 rounded-xl shadow-2xl w-full md:w-96 border-t-4 border-accent-carmesi flex flex-col transform hover:scale-[1.02] transition duration-500 hover:shadow-accent-carmesi/50">
                 <div class="text-center">
-                    <h3 class="font-heading text-3xl font-bold mb-2 text-accent-blue">Ruta Rápida (Web)</h3>
+                    <h3 class="font-heading text-3xl font-bold mb-2 text-accent-carmesi">Ruta Rápida (Web)</h3>
                     <p class="text-gray-400 mb-4">Ideal para presencia digital inmediata y campañas.</p>
                     <div class="text-6xl font-extrabold font-heading mb-6 text-text-light">
                         $750 <span class="text-xl font-normal text-gray-400">USD</span>
                     </div>
-                    <a href="#" class="inline-block bg-accent-blue text-primary-dark px-8 py-3 rounded-full font-bold hover:bg-cyan-400 transition shadow-lg w-full" onclick="document.getElementById('contactModal').classList.remove('hidden');">
+                    <!-- Botón Rojo Fuerte -->
+                    <a href="#" class="inline-block bg-accent-light text-primary-dark px-8 py-3 rounded-full font-bold hover:bg-accent-carmesi hover:text-text-light transition shadow-lg w-full" onclick="document.getElementById('contactModal').classList.remove('hidden');">
                         Empezar con Web
                     </a>
                 </div>
                 
                 <ul class="mt-8 space-y-3 text-left flex-grow">
                     <li class="flex items-center text-gray-300">
-                        <i class="fas fa-check-circle text-accent-blue mr-3"></i> 
+                        <i class="fas fa-check-circle text-accent-light mr-3"></i> 
                         Diseño y desarrollo de una (1) Landing Page.
                     </li>
                     <li class="flex items-center text-gray-300">
-                        <i class="fas fa-check-circle text-accent-blue mr-3"></i> 
+                        <i class="fas fa-check-circle text-accent-light mr-3"></i> 
                         Diseño 100% responsive (Móvil y Desktop).
                     </li>
                     <li class="flex items-center text-gray-300">
-                        <i class="fas fa-check-circle text-accent-blue mr-3"></i> 
+                        <i class="fas fa-check-circle text-accent-light mr-3"></i> 
                         Formulario de contacto funcional.
                     </li>
                     <li class="flex items-center text-gray-300">
-                        <i class="fas fa-check-circle text-accent-blue mr-3"></i> 
+                        <i class="fas fa-check-circle text-accent-light mr-3"></i> 
                         Optimización básica de velocidad y SEO.
                     </li>
                     <li class="flex items-center text-gray-300">
-                        <i class="fas fa-times-circle text-gray-500 mr-3"></i> 
+                        <i class="fas fa-times-circle text-gray-600 mr-3"></i> 
                         <span class="line-through opacity-70">Integración de bases de datos.</span>
                     </li>
                     <li class="flex items-center text-gray-300">
-                        <i class="fas fa-times-circle text-gray-500 mr-3"></i> 
+                        <i class="fas fa-times-circle text-gray-600 mr-3"></i> 
                         <span class="line-through opacity-70">Paneles de administración.</span>
                     </li>
                 </ul>
@@ -166,41 +169,42 @@
             </div>
 
             <!-- Plan 2: Aplicación Personalizada (Ruta Solución) -->
-            <div class="bg-gray-800 p-8 rounded-xl shadow-2xl w-full md:w-96 border-t-4 border-accent-orange flex flex-col transform hover:scale-[1.02] transition duration-500">
+            <div class="bg-secondary-dark p-8 rounded-xl shadow-2xl w-full md:w-96 border-t-4 border-accent-light flex flex-col transform hover:scale-[1.02] transition duration-500 hover:shadow-accent-light/50">
                 <div class="text-center">
-                    <h3 class="font-heading text-3xl font-bold mb-2 text-accent-orange">Ruta Solución (App)</h3>
+                    <h3 class="font-heading text-3xl font-bold mb-2 text-accent-light">Ruta Solución (App)</h3>
                     <p class="text-gray-400 mb-4">Para soluciones a medida, automatización o plataformas.</p>
                     <div class="text-6xl font-extrabold font-heading mb-6 text-text-light">
                         $1,800 <span class="text-xl font-normal text-gray-400">USD +</span>
                     </div>
-                    <a href="#" class="inline-block bg-accent-orange text-primary-dark px-8 py-3 rounded-full font-bold hover:bg-red-400 transition shadow-lg w-full" onclick="document.getElementById('contactModal').classList.remove('hidden');">
+                    <!-- Botón Carmesí Oscuro -->
+                    <a href="#" class="inline-block bg-accent-carmesi text-text-light px-8 py-3 rounded-full font-bold hover:bg-accent-light transition shadow-lg w-full" onclick="document.getElementById('contactModal').classList.remove('hidden');">
                         Cotizar Solución
                     </a>
                 </div>
 
                 <ul class="mt-8 space-y-3 text-left flex-grow">
                     <li class="flex items-center text-gray-300">
-                        <i class="fas fa-check-circle text-accent-orange mr-3"></i> 
+                        <i class="fas fa-check-circle text-accent-light mr-3"></i> 
                         Análisis y desarrollo de Aplicación Web completa.
                     </li>
                     <li class="flex items-center text-gray-300">
-                        <i class="fas fa-check-circle text-accent-orange mr-3"></i> 
+                        <i class="fas fa-check-circle text-accent-light mr-3"></i> 
                         Integración de bases de datos (Firestore/SQL).
                     </li>
                     <li class="flex items-center text-gray-300">
-                        <i class="fas fa-check-circle text-accent-orange mr-3"></i> 
+                        <i class="fas fa-check-circle text-accent-light mr-3"></i> 
                         Autenticación de usuarios y perfiles.
                     </li>
                     <li class="flex items-center text-gray-300">
-                        <i class="fas fa-check-circle text-accent-orange mr-3"></i> 
+                        <i class="fas fa-check-circle text-accent-light mr-3"></i> 
                         Diseño de panel de administración.
                     </li>
                     <li class="flex items-center text-gray-300">
-                        <i class="fas fa-check-circle text-accent-orange mr-3"></i> 
+                        <i class="fas fa-check-circle text-accent-light mr-3"></i> 
                         API's REST y lógica de negocio compleja.
                     </li>
                     <li class="flex items-center text-gray-300">
-                        <i class="fas fa-check-circle text-accent-orange mr-3"></i> 
+                        <i class="fas fa-check-circle text-accent-light mr-3"></i> 
                         Soporte y mantenimiento inicial.
                     </li>
                 </ul>
@@ -209,77 +213,77 @@
         </div>
     </section>
     
-    <!-- SECCIÓN PORTAFOLIO: Fondo Gris Oscuro (bg-gray-900) -->
-    <section id="portafolio" class="py-20 px-5 max-w-7xl mx-auto text-center bg-gray-900 text-text-light border-t border-gray-800">
-        <h2 class="font-heading text-4xl font-bold mb-5 relative after:content-[''] after:block after:w-16 after:h-0.5 after:bg-accent-blue after:mx-auto after:mt-3">Portafolio.</h2>
+    <!-- SECCIÓN PORTAFOLIO: Fondo Gris Oscuro (bg-secondary-dark) -->
+    <section id="portafolio" class="py-20 px-5 max-w-7xl mx-auto text-center bg-secondary-dark text-text-light border-t border-gray-900">
+        <h2 class="font-heading text-4xl font-bold mb-5 relative after:content-[''] after:block after:w-16 after:h-0.5 after:bg-accent-light after:mx-auto after:mt-3">Portafolio.</h2>
         <p class="text-lg mb-10 text-gray-400">Una selección de proyectos recientes que demuestran nuestra capacidad técnica y diseño.</p>
         
         <!-- Grid de 2x2 para mostrar 4 imágenes de proyectos -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             
             <!-- Proyecto 1: Landing Page SASSY -->
-            <!-- Fondo de tarjeta gris oscuro (bg-gray-900) para contraste con el fondo azul marino -->
-            <div data-project-id="project1" class="cursor-pointer bg-gray-800 rounded-xl overflow-hidden shadow-2xl group transform hover:-translate-y-1 transition duration-500 hover:shadow-accent-blue/60" onclick="openProjectModal('project1')">
-                <img src="https://placehold.co/600x350/1F2937/06B6D4?text=Landing+SASSY" alt="Captura de Landing Page SASSY" class="w-full h-48 object-cover group-hover:opacity-80 transition duration-500">
+            <!-- Sombras y hover con el color de iluminación -->
+            <div data-project-id="project1" class="cursor-pointer bg-gray-900 rounded-xl overflow-hidden shadow-2xl group transform hover:-translate-y-1 transition duration-500 hover:shadow-accent-light/40" onclick="openProjectModal('project1')">
+                <img src="https://placehold.co/600x350/0F0F0F/FF4444?text=Landing+SASSY" alt="Captura de Landing Page SASSY" class="w-full h-48 object-cover group-hover:opacity-80 transition duration-500">
                 <div class="p-6 text-left">
-                    <h3 class="font-heading text-xl font-bold text-accent-blue mb-2">Landing Page SASSY</h3>
+                    <h3 class="font-heading text-xl font-bold text-accent-light mb-2">Landing Page SASSY</h3>
                     <p class="text-gray-400 text-sm">Diseño de una página de aterrizaje moderna y elegante.</p>
                 </div>
             </div>
             
             <!-- Proyecto 2: Conversor de Divisas -->
-            <div data-project-id="project2" class="cursor-pointer bg-gray-800 rounded-xl overflow-hidden shadow-2xl group transform hover:-translate-y-1 transition duration-500 hover:shadow-accent-blue/60" onclick="openProjectModal('project2')">
-                <img src="https://placehold.co/600x350/1F2937/06B6D4?text=Conversor+Divisas+API" alt="Captura de Conversor de Divisas" class="w-full h-48 object-cover group-hover:opacity-80 transition duration-500">
+            <div data-project-id="project2" class="cursor-pointer bg-gray-900 rounded-xl overflow-hidden shadow-2xl group transform hover:-translate-y-1 transition duration-500 hover:shadow-accent-light/40" onclick="openProjectModal('project2')">
+                <img src="https://placehold.co/600x350/0F0F0F/FF4444?text=Conversor+Divisas+API" alt="Captura de Conversor de Divisas" class="w-full h-48 object-cover group-hover:opacity-80 transition duration-500">
                 <div class="p-6 text-left">
-                    <h3 class="font-heading text-xl font-bold text-accent-blue mb-2">Conversor de Divisas</h3>
+                    <h3 class="font-heading text-xl font-bold text-accent-light mb-2">Conversor de Divisas</h3>
                     <p class="text-gray-400 text-sm">App con consumo de API para tipos de cambio en tiempo real.</p>
                 </div>
             </div>
 
             <!-- Proyecto 3: Landing Page LITE -->
-            <div data-project-id="project3" class="cursor-pointer bg-gray-800 rounded-xl overflow-hidden shadow-2xl group transform hover:-translate-y-1 transition duration-500 hover:shadow-accent-blue/60" onclick="openProjectModal('project3')">
-                <img src="https://placehold.co/600x350/1F2937/06B6D4?text=Landing+LITE" alt="Captura de Landing Page LITE" class="w-full h-48 object-cover group-hover:opacity-80 transition duration-500">
+            <div data-project-id="project3" class="cursor-pointer bg-gray-900 rounded-xl overflow-hidden shadow-2xl group transform hover:-translate-y-1 transition duration-500 hover:shadow-accent-light/40" onclick="openProjectModal('project3')">
+                <img src="https://placehold.co/600x350/0F0F0F/FF4444?text=Landing+LITE" alt="Captura de Landing Page LITE" class="w-full h-48 object-cover group-hover:opacity-80 transition duration-500">
                 <div class="p-6 text-left">
-                    <h3 class="font-heading text-xl font-bold text-accent-blue mb-2">Landing Page LITE</h3>
+                    <h3 class="font-heading text-xl font-bold text-accent-light mb-2">Landing Page LITE</h3>
                     <p class="text-gray-400 text-sm">Proyecto de diseño minimalista enfocado en la velocidad de carga.</p>
                 </div>
             </div>
             
             <!-- Proyecto 4: Generador de Paletas -->
-            <div data-project-id="project4" class="cursor-pointer bg-gray-800 rounded-xl overflow-hidden shadow-2xl group transform hover:-translate-y-1 transition duration-500 hover:shadow-accent-blue/60" onclick="openProjectModal('project4')">
-                <img src="https://placehold.co/600x350/1F2937/06B6D4?text=Generador+Paletas" alt="Captura de Generador de Paletas" class="w-full h-48 object-cover group-hover:opacity-80 transition duration-500">
+            <div data-project-id="project4" class="cursor-pointer bg-gray-900 rounded-xl overflow-hidden shadow-2xl group transform hover:-translate-y-1 transition duration-500 hover:shadow-accent-light/40" onclick="openProjectModal('project4')">
+                <img src="https://placehold.co/600x350/0F0F0F/FF4444?text=Generador+Paletas" alt="Captura de Generador de Paletas" class="w-full h-48 object-cover group-hover:opacity-80 transition duration-500">
                 <div class="p-6 text-left">
-                    <h3 class="font-heading text-xl font-bold text-accent-blue mb-2">Generador de Paletas</h3>
+                    <h3 class="font-heading text-xl font-bold text-accent-light mb-2">Generador de Paletas</h3>
                     <p class="text-gray-400 text-sm">Utilidad web para crear y copiar códigos de color al instante.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PIE DE PÁGINA: Fondo Azul Marino (bg-primary-dark) -->
+    <!-- PIE DE PÁGINA: Fondo Negro Profundo (bg-primary-dark) -->
     <footer id="contacto" class="bg-primary-dark text-white text-center py-10 px-5 mt-0">
         <div class="max-w-4xl mx-auto">
             <p class="text-xl mb-4 font-semibold">Trabajemos juntos. Escribe o llama:</p>
             <div class="space-x-4 mb-6">
-                <!-- Enlaces de contacto con acento azul -->
-                <a href="mailto:franciswco8@gmail.com" class="text-accent-blue hover:text-white transition font-medium">📧 franciswco8@gmail.com</a>
-                <span class="text-gray-400">|</span>
-                <a href="https://wa.me/584128956742" target="_blank" class="text-accent-blue hover:text-white transition font-medium">📞 WhatsApp</a>
+                <!-- Enlaces de contacto con acento de iluminación -->
+                <a href="mailto:franciswco8@gmail.com" class="text-accent-light hover:text-white transition font-medium">📧 franciswco8@gmail.com</a>
+                <span class="text-gray-600">|</span>
+                <a href="https://wa.me/584128956742" target="_blank" class="text-accent-light hover:text-white transition font-medium">📞 WhatsApp</a>
             </div>
-            <p class="text-gray-500 text-sm opacity-70">
+            <p class="text-gray-600 text-sm opacity-70">
                 &copy; 2025 [Francisco Rosales/PerosnalUnity].
             </p>
         </div>
     </footer>
 
-    <!-- MODAL DE SOBRE MÍ/PERFIL (NUEVO) -->
+    <!-- MODAL DE SOBRE MÍ/PERFIL -->
     <div id="aboutModal" class="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm z-[9999] hidden flex items-center justify-center p-4" onclick="closeAboutModalOutside(event)">
-        <div class="bg-gray-900 text-text-light p-6 md:p-10 rounded-xl shadow-2xl w-full max-w-4xl relative max-h-[90vh] overflow-y-auto border-t-4 border-accent-orange" onclick="event.stopPropagation()">
+        <div class="bg-secondary-dark text-text-light p-6 md:p-10 rounded-xl shadow-2xl w-full max-w-4xl relative max-h-[90vh] overflow-y-auto border-t-4 border-accent-carmesi" onclick="event.stopPropagation()">
             
-            <button class="absolute top-3 right-3 text-4xl text-gray-400 hover:text-accent-orange transition leading-none" id="closeAboutModalBtn">&times;</button>
+            <button class="absolute top-3 right-3 text-4xl text-gray-400 hover:text-accent-light transition leading-none" id="closeAboutModalBtn">&times;</button>
             
             <!-- Contenido de la sección Sobre Mí -->
-            <h2 class="font-heading text-4xl font-bold text-center mb-10 relative after:content-[''] after:block after:w-16 after:h-0.5 after:bg-accent-orange after:mx-auto after:mt-3">
+            <h2 class="font-heading text-4xl font-bold text-center mb-10 relative after:content-[''] after:block after:w-16 after:h-0.5 after:bg-accent-carmesi after:mx-auto after:mt-3">
                 Sobre Mí & Skills.
             </h2>
             
@@ -292,7 +296,7 @@
                     <p class="text-lg text-gray-300 mb-6">
                         Me especializo en transformar ideas complejas en productos digitales accesibles, priorizando la experiencia del usuario y las últimas tecnologías.
                     </p>
-                    <a href="#" class="inline-block text-accent-orange font-semibold hover:text-white transition border-b border-accent-orange hover:border-white" 
+                    <a href="#" class="inline-block text-accent-light font-semibold hover:text-white transition border-b border-accent-light hover:border-white" 
                        onclick="document.getElementById('aboutModal').classList.add('hidden'); document.getElementById('contactModal').classList.remove('hidden');">
                         Hablemos de tu proyecto &rarr;
                     </a>
@@ -302,13 +306,13 @@
                 <div class="md:w-1/2 w-full">
                     <h3 class="font-heading text-2xl font-semibold mb-4 text-text-light">Tecnologías Clave</h3>
                     <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-                        <!-- Skill Badges - Hover con acento naranja para mayor contraste -->
-                        <span class="bg-gray-800 text-accent-blue text-sm font-medium px-4 py-2 rounded-full border border-accent-blue transition hover:bg-accent-orange hover:text-primary-dark shadow-lg">JavaScript (ES6+)</span>
-                        <span class="bg-gray-800 text-accent-blue text-sm font-medium px-4 py-2 rounded-full border border-accent-blue transition hover:bg-accent-orange hover:text-primary-dark shadow-lg">React & Hooks</span>
-                        <span class="bg-gray-800 text-accent-blue text-sm font-medium px-4 py-2 rounded-full border border-accent-blue transition hover:bg-accent-orange hover:text-primary-dark shadow-lg">Tailwind CSS</span>
-                        <span class="bg-gray-800 text-accent-blue text-sm font-medium px-4 py-2 rounded-full border border-accent-blue transition hover:bg-accent-orange hover:text-primary-dark shadow-lg">Firebase / Firestore</span>
-                        <span class="bg-gray-800 text-accent-blue text-sm font-medium px-4 py-2 rounded-full border border-accent-blue transition hover:bg-accent-orange hover:text-primary-dark shadow-lg">Node.js / Express</span>
-                        <span class="bg-gray-800 text-accent-blue text-sm font-medium px-4 py-2 rounded-full border border-accent-blue transition hover:bg-accent-orange hover:text-primary-dark shadow-lg">APIs REST</span>
+                        <!-- Skill Badges - Hover con acento de iluminación -->
+                        <span class="bg-gray-800 text-accent-light text-sm font-medium px-4 py-2 rounded-full border border-accent-carmesi transition hover:bg-accent-light hover:text-primary-dark shadow-lg">JavaScript (ES6+)</span>
+                        <span class="bg-gray-800 text-accent-light text-sm font-medium px-4 py-2 rounded-full border border-accent-carmesi transition hover:bg-accent-light hover:text-primary-dark shadow-lg">React & Hooks</span>
+                        <span class="bg-gray-800 text-accent-light text-sm font-medium px-4 py-2 rounded-full border border-accent-carmesi transition hover:bg-accent-light hover:text-primary-dark shadow-lg">Tailwind CSS</span>
+                        <span class="bg-gray-800 text-accent-light text-sm font-medium px-4 py-2 rounded-full border border-accent-carmesi transition hover:bg-accent-light hover:text-primary-dark shadow-lg">Firebase / Firestore</span>
+                        <span class="bg-gray-800 text-accent-light text-sm font-medium px-4 py-2 rounded-full border border-accent-carmesi transition hover:bg-accent-light hover:text-primary-dark shadow-lg">Node.js / Express</span>
+                        <span class="bg-gray-800 text-accent-light text-sm font-medium px-4 py-2 rounded-full border border-accent-carmesi transition hover:bg-accent-light hover:text-primary-dark shadow-lg">APIs REST</span>
                     </div>
                 </div>
             </div>
@@ -317,7 +321,7 @@
     </div>
     <!-- FIN MODAL DE SOBRE MÍ -->
 
-    <!-- MODAL DE CONTACTO (Existente) -->
+    <!-- MODAL DE CONTACTO -->
     <div id="contactModal" class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-[9999] hidden flex items-center justify-center p-4" onclick="closeModalOutside(event)">
         <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md relative text-center" onclick="event.stopPropagation()">
             <button class="absolute top-4 right-4 text-3xl text-gray-400 hover:text-primary-dark transition leading-none" id="closeModalBtn">&times;</button>
@@ -335,7 +339,7 @@
 
                 <a 
                     href="mailto:franciswco8@gmail.com" 
-                    class="bg-accent-blue text-primary-dark flex items-center justify-center p-4 rounded-lg font-bold uppercase hover:bg-primary-dark hover:text-white transition"
+                    class="bg-accent-carmesi text-text-light flex items-center justify-center p-4 rounded-lg font-bold uppercase hover:bg-accent-light transition"
                 >
                     <i class="fas fa-envelope mr-3 text-xl"></i> Contactar por Email
                 </a>
@@ -343,11 +347,11 @@
         </div>
     </div>
     
-    <!-- MODAL DE DETALLE DE PROYECTO (Existente) -->
+    <!-- MODAL DE DETALLE DE PROYECTO -->
     <div id="projectDetailModal" class="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm z-[10000] hidden flex items-center justify-center p-4" onclick="closeProjectModalOutside(event)">
         <div class="bg-primary-dark text-text-light p-6 md:p-10 rounded-xl shadow-2xl w-full max-w-4xl relative max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
             
-            <button class="absolute top-3 right-3 text-4xl text-gray-400 hover:text-accent-blue transition leading-none" id="closeProjectModalBtn">&times;</button>
+            <button class="absolute top-3 right-3 text-4xl text-gray-400 hover:text-accent-light transition leading-none" id="closeProjectModalBtn">&times;</button>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Imagen del proyecto -->
@@ -357,11 +361,11 @@
                 
                 <!-- Detalles del proyecto -->
                 <div class="md:col-span-1 text-left">
-                    <span id="modalProjectCategory" class="inline-block text-xs font-semibold uppercase tracking-wider text-primary-dark bg-accent-blue px-3 py-1 rounded-full mb-3"></span>
+                    <span id="modalProjectCategory" class="inline-block text-xs font-semibold uppercase tracking-wider text-primary-dark bg-accent-light px-3 py-1 rounded-full mb-3"></span>
                     <h2 id="modalProjectTitle" class="font-heading text-3xl font-bold text-text-light mb-4"></h2>
                     <p id="modalProjectLongDesc" class="text-gray-400 mb-6"></p>
                     
-                    <a href="#" id="modalProjectLink" target="_blank" class="inline-block bg-accent-blue text-primary-dark px-6 py-3 rounded-lg font-bold hover:bg-cyan-400 transition shadow-md">
+                    <a href="#" id="modalProjectLink" target="_blank" class="inline-block bg-accent-light text-primary-dark px-6 py-3 rounded-lg font-bold hover:bg-accent-carmesi hover:text-text-light transition shadow-md">
                         <i class="fas fa-external-link-alt mr-2"></i> Ver Demo/Enlace
                     </a>
                     <button onclick="document.getElementById('projectDetailModal').classList.add('hidden')" class="ml-4 text-gray-400 hover:text-white transition font-medium">
@@ -378,28 +382,28 @@
             'project1': {
                 title: 'Landing Page SASSY',
                 longDesc: 'Una Landing Page de alto impacto diseñada para la conversión. Utiliza un diseño asimétrico y tipografía moderna para captar la atención. Optimización SEO y velocidad de carga priorizadas. Ideal para servicios premium o lanzamientos.',
-                imgSrc: 'https://placehold.co/800x450/1F2937/06B6D4?text=Landing+Page+SASSY+Demo',
+                imgSrc: 'https://placehold.co/800x450/0F0F0F/FF4444?text=Landing+Page+SASSY+Demo',
                 link: 'demos/landing-pages/lp1.html',
                 category: 'Web Profesional'
             },
             'project2': {
                 title: 'Conversor de Divisas',
                 longDesc: 'Aplicación web construida para ser ligera y rápida. Consume una API de tasas de cambio en tiempo real y permite a los usuarios calcular conversiones de divisas instantáneamente. Diseño limpio y enfocado en la usabilidad y la respuesta inmediata.',
-                imgSrc: 'https://placehold.co/800x450/1F2937/06B6D4?text=Conversor+Divisas+App+Demo',
+                imgSrc: 'https://placehold.co/800x450/0F0F0F/FF4444?text=Conversor+Divisas+App+Demo',
                 link: 'demos/utilidades/conversor-divisas.html',
                 category: 'Aplicación Web'
             },
             'project3': {
                 title: 'Landing Page LITE',
                 longDesc: 'Página de aterrizaje extremadamente ligera y minimalista. Enfocada en la accesibilidad (WCAG) y rendimiento (Core Web Vitals). Ideal para campañas de marketing rápidas o páginas "Coming Soon". Uso mínimo de JavaScript.',
-                imgSrc: 'https://placehold.co/800x450/1F2937/06B6D4?text=Landing+Page+LITE+Demo',
+                imgSrc: 'https://placehold.co/800x450/0F0F0F/FF4444?text=Landing+Page+LITE+Demo',
                 link: 'demos/landing-pages/lp2.html',
                 category: 'Web Profesional'
             },
             'project4': {
                 title: 'Generador de Paletas',
                 longDesc: 'Herramienta de productividad para diseñadores y desarrolladores. Permite generar paletas de colores aleatorias o basadas en un tono principal y exportar los códigos (HEX, RGB) con un solo clic. Desarrollada con Vanilla JavaScript para eficiencia.',
-                imgSrc: 'https://placehold.co/800x450/1F2937/06B6D4?text=Generador+Paletas+App+Demo',
+                imgSrc: 'https://placehold.co/800x450/0F0F0F/FF4444?text=Generador+Paletas+App+Demo',
                 link: 'demos/utilidades/generador-paletas.html',
                 category: 'Utilidad'
             }
