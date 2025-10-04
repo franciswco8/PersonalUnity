@@ -8,7 +8,7 @@
     <!-- CDN de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Nuevas Fuentes: Poppins (Heading) e Inter (Body) -->
+    <!-- Fuentes: Poppins (Heading) e Inter (Body) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- Iconos de Font Awesome -->
@@ -38,42 +38,42 @@
 <!-- Aplicamos el fondo negro principal y el color de texto blanco -->
 <body class="font-body bg-primary-dark text-text-light pt-16">
 
-    <!-- CABECERA: Mantenemos el fondo blanco para un fuerte contraste y lectura clara de la navegación -->
-    <header class="fixed top-0 left-0 w-full bg-white shadow-lg z-50 px-5 py-4 border-b-4 border-accent-carmesi">
+    <!-- CABECERA: Fondo Negro Semi-Opaco (bg-primary-dark/95) -->
+    <header class="fixed top-0 left-0 w-full bg-primary-dark bg-opacity-95 shadow-lg z-50 px-5 py-4 border-b border-accent-carmesi backdrop-blur-sm transition">
         <div class="flex justify-between items-center max-w-7xl mx-auto">
-            <!-- Logo - Ahora en color Carmesí Oscuro -->
-            <div class="font-heading text-xl font-bold text-accent-carmesi">PersonalUnity.</div>
+            <!-- Logo - Ahora en color Claro para el fondo oscuro -->
+            <div class="font-heading text-xl font-bold text-accent-light">PersonalUnity.</div>
             
             <!-- Contenedor del menú principal (Desktop) y botón de contacto (siempre visible) -->
             <nav class="flex items-center space-x-4 sm:space-x-6">
-                <!-- Enlaces de navegación (Ocultos en móvil) -->
+                <!-- Enlaces de navegación (Ocultos en móvil) - Texto blanco -->
                 <div class="hidden sm:flex items-center space-x-6">
                     <!-- ENLACE PARA ABRIR MODAL SOBRE MÍ (Desktop) -->
-                    <a href="#" id="openAboutModalBtnDesktop" class="text-primary-dark hover:text-accent-carmesi font-semibold transition">Sobre Mí</a>
-                    <a href="#servicios" class="text-primary-dark hover:text-accent-carmesi font-semibold transition">Servicios</a>
+                    <a href="#" id="openAboutModalBtnDesktop" class="text-text-light hover:text-accent-light font-semibold transition">Sobre Mí</a>
+                    <a href="#servicios" class="text-text-light hover:text-accent-light font-semibold transition">Servicios</a>
                     <!-- ENLACE: Precios -->
-                    <a href="#precios" class="text-primary-dark hover:text-accent-carmesi font-semibold transition">Precios</a>
-                    <a href="#portafolio" class="text-primary-dark hover:text-accent-carmesi font-semibold transition">Portafolio</a>
+                    <a href="#precios" class="text-text-light hover:text-accent-light font-semibold transition">Precios</a>
+                    <a href="#portafolio" class="text-text-light hover:text-accent-light font-semibold transition">Portafolio</a>
                 </div>
                 
-                <!-- Botón de Contacto (Siempre visible) -->
-                <a href="#" id="openModalBtn" class="border-2 border-accent-carmesi text-accent-carmesi hover:bg-accent-carmesi hover:text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-semibold transition shadow-md text-sm sm:text-base">Contacto</a>
+                <!-- Botón de Contacto (Estilo Carmesí) -->
+                <a href="#" id="openModalBtn" class="border-2 border-accent-light text-accent-light hover:bg-accent-light hover:text-primary-dark px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-semibold transition shadow-md text-sm sm:text-base">Contacto</a>
                 
-                <!-- Botón del Menú Hamburguesa (Visible solo en móvil) -->
-                <button id="menuToggle" class="sm:hidden text-primary-dark text-2xl p-1 focus:outline-none">
+                <!-- Botón del Menú Hamburguesa (Visible solo en móvil) - Icono blanco -->
+                <button id="menuToggle" class="sm:hidden text-text-light text-2xl p-1 focus:outline-none">
                     <i class="fas fa-bars"></i>
                 </button>
             </nav>
         </div>
         
-        <!-- Menú Desplegable Móvil (Inicialmente oculto) -->
-        <div id="mobileMenu" class="hidden sm:hidden mt-3 bg-white border-t border-gray-200">
+        <!-- Menú Desplegable Móvil (Fondo oscuro) -->
+        <div id="mobileMenu" class="hidden sm:hidden mt-3 bg-secondary-dark border-t border-accent-carmesi">
             <!-- ENLACE PARA ABRIR MODAL SOBRE MÍ (Móvil) -->
-            <a href="#" id="openAboutModalBtnMobile" class="block py-2 px-4 text-primary-dark hover:bg-gray-100 transition" onclick="document.getElementById('mobileMenu').classList.add('hidden');">Sobre Mí</a>
-            <a href="#servicios" class="block py-2 px-4 text-primary-dark hover:bg-gray-100 transition" onclick="document.getElementById('mobileMenu').classList.add('hidden');">Servicios</a>
+            <a href="#" id="openAboutModalBtnMobile" class="block py-2 px-4 text-text-light hover:bg-gray-900 transition" onclick="document.getElementById('mobileMenu').classList.add('hidden');">Sobre Mí</a>
+            <a href="#servicios" class="block py-2 px-4 text-text-light hover:bg-gray-900 transition" onclick="document.getElementById('mobileMenu').classList.add('hidden');">Servicios</a>
             <!-- ENLACE: Precios (Móvil) -->
-            <a href="#precios" class="block py-2 px-4 text-primary-dark hover:bg-gray-100 transition" onclick="document.getElementById('mobileMenu').classList.add('hidden');">Precios</a>
-            <a href="#portafolio" class="block py-2 px-4 text-primary-dark hover:bg-gray-100 transition" onclick="document.getElementById('mobileMenu').classList.add('hidden');">Portafolio</a>
+            <a href="#precios" class="block py-2 px-4 text-text-light hover:bg-gray-900 transition" onclick="document.getElementById('mobileMenu').classList.add('hidden');">Precios</a>
+            <a href="#portafolio" class="block py-2 px-4 text-text-light hover:bg-gray-900 transition" onclick="document.getElementById('mobileMenu').classList.add('hidden');">Portafolio</a>
         </div>
     </header>
 
@@ -100,7 +100,6 @@
         
         <div class="flex flex-wrap justify-center gap-8">
             <!-- Tarjeta 1: Páginas Web Profesionales -->
-            <!-- Tarjeta con borde carmesí y sombreado de iluminación -->
             <div class="bg-gray-900 p-8 rounded-xl shadow-2xl w-full md:w-80 border-t-4 border-accent-carmesi transform hover:-translate-y-2 transition duration-500 hover:shadow-accent-light/30">
                 <i class="fas fa-laptop-code text-3xl text-accent-light mb-4"></i>
                 <h3 class="font-heading text-2xl font-semibold mb-3 text-text-light">Páginas Web Profesionales</h3>
@@ -222,7 +221,6 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             
             <!-- Proyecto 1: Landing Page SASSY -->
-            <!-- Sombras y hover con el color de iluminación -->
             <div data-project-id="project1" class="cursor-pointer bg-gray-900 rounded-xl overflow-hidden shadow-2xl group transform hover:-translate-y-1 transition duration-500 hover:shadow-accent-light/40" onclick="openProjectModal('project1')">
                 <img src="https://placehold.co/600x350/0F0F0F/FF4444?text=Landing+SASSY" alt="Captura de Landing Page SASSY" class="w-full h-48 object-cover group-hover:opacity-80 transition duration-500">
                 <div class="p-6 text-left">
@@ -323,6 +321,7 @@
 
     <!-- MODAL DE CONTACTO -->
     <div id="contactModal" class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-[9999] hidden flex items-center justify-center p-4" onclick="closeModalOutside(event)">
+        <!-- Se restauró rounded-xl -->
         <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md relative text-center" onclick="event.stopPropagation()">
             <button class="absolute top-4 right-4 text-3xl text-gray-400 hover:text-primary-dark transition leading-none" id="closeModalBtn">&times;</button>
             <h2 class="font-heading text-3xl font-bold text-primary-dark mb-3">¿Cómo prefieres que hablemos?</h2>
@@ -349,6 +348,7 @@
     
     <!-- MODAL DE DETALLE DE PROYECTO -->
     <div id="projectDetailModal" class="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm z-[10000] hidden flex items-center justify-center p-4" onclick="closeProjectModalOutside(event)">
+        <!-- Se restauró rounded-xl -->
         <div class="bg-primary-dark text-text-light p-6 md:p-10 rounded-xl shadow-2xl w-full max-w-4xl relative max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
             
             <button class="absolute top-3 right-3 text-4xl text-gray-400 hover:text-accent-light transition leading-none" id="closeProjectModalBtn">&times;</button>
@@ -361,6 +361,7 @@
                 
                 <!-- Detalles del proyecto -->
                 <div class="md:col-span-1 text-left">
+                    <!-- Se restauró el color de fondo y el rounded-full -->
                     <span id="modalProjectCategory" class="inline-block text-xs font-semibold uppercase tracking-wider text-primary-dark bg-accent-light px-3 py-1 rounded-full mb-3"></span>
                     <h2 id="modalProjectTitle" class="font-heading text-3xl font-bold text-text-light mb-4"></h2>
                     <p id="modalProjectLongDesc" class="text-gray-400 mb-6"></p>
